@@ -11,9 +11,16 @@ body {
 
 .sidenav {
     height: 100%;
-    background-color: #000;
     overflow-x: hidden;
     padding-top: 20px;
+}
+
+.admin {
+    background-color: #000;
+}
+
+.seller {
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
 .main {
@@ -25,6 +32,7 @@ body {
         padding-top: 15px;
     }
 }
+
 @media screen and (max-width: 450px) {
     .login-form {
         margin-top: 10%;
@@ -34,10 +42,12 @@ body {
         margin-top: 10%;
     }
 }
+
 @media screen and (min-width: 768px) {
     .main {
         margin-left: 40%;
     }
+
     .sidenav {
         width: 40%;
         position: fixed;
@@ -53,7 +63,9 @@ body {
     .register-form {
         margin-top: 20%;
     }
+
 }
+
 .login-main-text {
     margin-top: 20%;
     padding: 60px;
@@ -68,5 +80,13 @@ body {
     background-color: #000 !important;
     color: #fff;
 }
-/*----------------- Admiin Dashboard */
-/* --------------sudebar------- */
+
+.btn-gradient {
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    color: white;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to right, #d0ee24, #36d859, #36b6dd, #b245b4);
+    color: white;
+}

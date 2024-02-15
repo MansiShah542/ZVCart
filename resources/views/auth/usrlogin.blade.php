@@ -31,7 +31,7 @@ ZVCart Login
             <a href="{{route('register.view')}}" class="btn btn-outline-danger">Create new</a>
         </div>
         <div class="d-flex align-items-center justify-content-center pb-4">
-          <a href="#" class="btn btn-outline-danger">Login as a Seller</a>
+          <a href="{{route('seller.login.view')}}" class="btn btn-outline-danger">Login as a Seller</a>
         </div>
     </form>
 @endsection
