@@ -6,10 +6,10 @@
 <form action="{{ route('seller.login') }}" method="POST">
     @csrf
     <div class="form-group">
-        <label>Company Name</label>
-        <input type="text" class="form-control" placeholder="Company Name" name="name">
+        <label>Email</label>
+        <input type="text" class="form-control" placeholder="abc@example.com" name="email" value="{{ old('email') }}">
         <span class="text-danger">
-            @error('adminName')
+            @error('email')
                 {{ $message }}
             @enderror
         </span>
@@ -18,7 +18,7 @@
         <label>Password</label>
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="text-danger">
-            @error('adminPassword')
+            @error('password')
                 {{ $message }}
             @enderror
         </span>

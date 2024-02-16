@@ -15,7 +15,7 @@
 <body>
     <div class="sidenav admin">
         <div class="login-main-text">
-            <h1>ZVCart<br></h1><h2> Seller Login Page</h2>
+            <h1>ZVCart<br></h1><h2> Admin Login Page</h2>
             <p>Administrating is not an easy job.</p>
         </div>
     </div>
