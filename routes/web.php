@@ -15,6 +15,13 @@ Route::controller(UserHomeController::class)->group(function(){
 Route::get('/admin', function () {
     return view('admin/adminDashboard');
 })->name('admin.dashboard');
+Route::get('/admin/vendors', function () {
+    return view('admin/vendors');
+})->name('admin.vendors');
+
+Route::get('/seller', function () {
+    return view('seller/sellerDashboard');
+})->name('seller.dashboard');
 
 Route::controller(AuthController::class)->group(function(){
     Route::get('/login','userlogin_view')->name('login.view');
@@ -33,6 +40,7 @@ Route::controller(SellerController::class)->group(function(){
     Route::get('/seller/login', 'seller_login_view')->name('seller.login.view');
     Route::post('/seller/login', 'seller_login')->name('seller.login');
     Route::get('/seller/register', 'seller_register_view')->name('seller.register.view');
+    Route::post('/seller/register', 'seller_register')->name('seller.register');
 });
 
 // Route::get('/seller/login', function () {
