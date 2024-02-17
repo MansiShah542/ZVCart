@@ -14,6 +14,7 @@ class Seller extends Model implements Authenticatable
 
     protected $fillable = [
         'company_name',
+        'approved',
         'role',
         'gst_no',
         'phone',
