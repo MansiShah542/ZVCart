@@ -13,9 +13,6 @@
 </head>
 
 <body>
-    {{-- @include('admin.sidebar') --}}
-
-
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -27,7 +24,7 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="{{route('admin.dashboard')}}" class="nav-link align-middle px-0">
                                 <i class="fa-solid fa-house" style="color: #fff"></i> <span
                                     class="ms-1 d-none d-sm-inline text-white">Home</span>
                             </a>
@@ -100,7 +97,7 @@
                 </div>
             </div>
             <div class="col py-3">
-                @include('admin.adminhome')
+                @yield('content-page')
             </div>
         </div>
     </div>

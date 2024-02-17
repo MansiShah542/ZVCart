@@ -12,12 +12,12 @@ Route::controller(UserHomeController::class)->group(function(){
     Route::get('/home','index')->name('home');
 });
 
-Route::get('/admin', function () {
-    return view('admin/adminDashboard');
-})->name('admin.dashboard');
-Route::get('/admin/vendors', function () {
-    return view('admin/vendors');
-})->name('admin.vendors');
+// Route::get('/admin', function () {
+//     return view('admin/adminDashboard');
+// })->name('admin.dashboard');
+// Route::get('/admin/vendors', function () {
+//     return view('admin/vendors');
+// })->name('admin.vendors');
 
 Route::get('/seller', function () {
     return view('seller/sellerDashboard');
@@ -35,6 +35,13 @@ Route::controller(AdminLoginController::class)->group(function(){
     Route::get('/admin/login', 'admin_login_view')->name('admin.login.view');
     Route::post('/admin/login', 'admin_login')->name('admin.login');
     Route::post('/logout', 'admin_logout')->name('admin.logout');
+    Route::get('/admin/home', 'admin_home')->name('admin.dashboard');
+    Route::get('/admin/vendors', 'admin_vendors')->name('admin.vendors');
+    Route::post('/admin/approve/{seller}', 'vendor_approve')->name('admin.approve');
+    Route::post('/admin/disapprove/{seller}', 'vendor_disapprove')->name('admin.disapprove');
+    Route::get('/admin/edit/{seller}', 'admin_seller_edit')->name('admin.seller.edit');
+    Route::put('/admin/update/{seller}', 'admin_seller_update')->name('admin.seller.update');
+    Route::delete('/admin/delete/{seller}', 'admin_seller_delete')->name('admin.seller.delete');
 });
 Route::controller(SellerController::class)->group(function(){
     Route::get('/seller/login', 'seller_login_view')->name('seller.login.view');
@@ -43,7 +50,4 @@ Route::controller(SellerController::class)->group(function(){
     Route::post('/seller/register', 'seller_register')->name('seller.register');
 });
 
-// Route::get('/seller/login', function () {
-//     return view('seller/sloginlayout');
-// })->name('seller.login');
 
