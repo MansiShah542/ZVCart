@@ -30,21 +30,30 @@ class AdminLoginController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'admin') {
-
+                // $user->createToken('AdminToken')->accessToken;
+                $accessToken = auth()->user()->createToken('AdminToken')->accessToken;
                 return redirect()->route('admin.dashboard');
             } else {
-                return redirect('login')->withInput()->withError('Error: Incorrect Credentials!');
+                return redirect()->route('admin.login.view')->withInput()->withError('Unauthorised User!');
             }
         } else {
             // Authentication failed
-            return redirect('admin/login')->withInput()->withError('Error: Incorrect Credentials!');
+            return redirect()->route('admin.login.view')->withInput()->withError('Error: Incorrect Credentials!');
         }
     }
-
     public function admin_logout()
     {
-        Auth::logout(); // Clear the user's session
-        return redirect('admin/login'); // Redirect the user to the login page
+        if (Auth::check()) {
+            $user = Auth::user();
+            //revoking access token
+            $user->tokens->each(function ($token,$key) {
+                $token->delete();
+            });
+            // $user->token()->revoke();
+            Auth::logout(); // Clear the user's session
+        }
+
+        return redirect()->route('admin.login.view'); // Redirect the user to the login page
     }
 
     public function admin_home()
@@ -68,25 +77,10 @@ class AdminLoginController extends Controller
         $seller->update(['approved' => false]);
         return redirect()->back()->with('success', 'Seller disapproved successfully.');
     }
-    public function admin_seller_edit(Seller $seller)
-    {
-        return view('admin.sellerEdit', compact('seller'));
-    }
-    public function admin_seller_update(Request $request, Seller $seller)
-    {
-        $request->validate([
-            'company_name' => ['required'],
-            'gst_no' => ['nullable', 'regex:/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/'],
-            'phone' => ['required', 'min:10'],
-            'address' => ['required'],
-            'email' => ['required', 'email', 'unique:sellers,email'.$seller->id],
-        ]);
-        $seller->update($request->all());
-        return redirect()->back()->with('success','Seller Updated Successfully!');
-    }
+
     public function admin_seller_delete(Seller $seller)
     {
         $seller->delete();
-        return redirect()->route('admin.vendors')->with('success','Seller deleted Successfully!');
+        return redirect()->route('admin.vendors')->with('success', 'Seller deleted Successfully!');
     }
 }

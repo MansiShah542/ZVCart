@@ -9,8 +9,8 @@ ZVCart Login
         <p>Please login to your account</p>
 
         <div class="form-outline mb-4">
-            <input type="email" name="email" id="form2Example11" class="form-control" placeholder="email address" />
-            <label class="form-label" for="form2Example11">Username</label>
+            <input type="email" name="email" id="form2Example11" class="form-control" placeholder="email address" value="{{ old('email') }}"/>
+            <label class="form-label" for="form2Example11">Email</label>
             <span class="text-danger">@error('email'){{ $message }} @enderror</span>
         </div>
 

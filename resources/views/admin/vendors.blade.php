@@ -12,7 +12,6 @@
             <th>Email</th>
             <th>Address</th>
             <th>Approval</th>
-            <th>Update</th>
             <th>Delete</th>
         </thead>
         <tbody>
@@ -38,9 +37,7 @@
                             </form>
                         @endif
                     </td>
-                    <td><a href="{{ route('admin.seller.edit', $seller->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    </td>
-                    <td><a href="{{ route('admin.seller.delete', $seller->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    <td><a href="{{ route('admin.seller.delete', $seller->id) }}" class="btn btn-warning btn-sm">Delete</a>
                     </td>
 
             </tr>

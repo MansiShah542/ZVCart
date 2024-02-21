@@ -24,13 +24,13 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
                         <li class="nav-item">
-                            <a href="{{route('admin.dashboard')}}" class="nav-link align-middle px-0">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link align-middle px-0">
                                 <i class="fa-solid fa-house" style="color: #fff"></i> <span
                                     class="ms-1 d-none d-sm-inline text-white">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('admin.vendors')}}" class="nav-link px-0 align-middle">
+                            <a href="{{ route('admin.vendors') }}" class="nav-link px-0 align-middle">
                                 <i class="fa-solid fa-user-tie" style="color: #fff"></i>
                                 <span class="ms-1 d-none d-sm-inline text-white">Vendors</span> </a>
                         </li>
@@ -52,7 +52,7 @@
                         </li>
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span
+                                <i class="fa-solid fa-tag" style="color: #ffffff;"></i> <span
                                     class="ms-1 d-none d-sm-inline text-white">Products</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
@@ -71,9 +71,7 @@
                         <a href="#"
                             class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{-- <img src="https://github.com/mdo.png" alt="profile" width="30" height="30" --}}
-                            {{-- class="rounded-circle"> --}}
-                            <i class="fa-regular fa-user rounded-circle"></i>
+                            <i class="fa-regular fa-circle-user fa-lg" style="color: #fff;"></i>
                             <span class="d-none d-sm-inline mx-1">Admin</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
