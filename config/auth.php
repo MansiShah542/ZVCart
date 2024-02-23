@@ -12,8 +12,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'seller' => [
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+        'seller_web' => [
             'driver' => 'session',
+            'provider' => 'sellers',
+        ],
+          'seller_api' => [
+            'driver' => 'passport',
             'provider' => 'sellers',
         ],
 
@@ -28,7 +37,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Seller::class,
         ],
-        
+
     ],
 
     'passwords' => [

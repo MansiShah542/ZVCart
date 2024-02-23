@@ -7,8 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-// use Illuminate\Support\Facades\DB;
-
 class AuthController extends Controller
 {
     public function userlogin_view()
@@ -27,14 +25,14 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'user') {
-
+                $accessToken = auth()->user()->createToken('UserToken', ['user'])->accessToken;
                 return redirect()->route('home');
             }else{
-                return redirect('login')->withInput()->withError('Error: Incorrect Credentials!');
+                return redirect()->route('login.view')->withInput()->withError('Error: Unauthorized User!');
             }
         } else {
             //authentication failed
-            return redirect('login')->withInput()->withError('Error: Incorrect Credentials!');
+            return redirect()->route('login.view')->withInput()->withError('Error: Incorrect Credentials!');
         }
     }
 
@@ -61,13 +59,22 @@ class AuthController extends Controller
 
         //save the user
         $user->save();
-        return redirect()->intended('home');
+        return redirect()->route('login.view')->withSuccess('Registered Successfully');
     }
 
     public function logout()
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $role=$user->role;
+            if($role==='user') {
+            $user->tokens->each(function ($token,$key) {
+                $token->delete();
+            });
+        }
         Auth::logout(); // Clear the user's session
-        return redirect('/login');
+        }
+        return redirect()->route('login.view');
     }
 
 }

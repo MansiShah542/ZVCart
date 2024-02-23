@@ -1,3 +1,6 @@
+:root{
+    --lin-grad:linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
 body {
     font-family: "Lato", sans-serif;
     min-height: 100vh;
@@ -20,7 +23,7 @@ body {
 }
 
 .seller {
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: var(--lin-grad);
 }
 
 .main {
@@ -80,11 +83,15 @@ body {
 }
 
 .btn-gradient {
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: var(--lin-grad);
     color: white;
 }
 
 .btn-gradient:hover {
     background: linear-gradient(to right, #d0ee24, #36d859, #36b6dd, #b245b4);
     color: white;
+}
+.sdash{
+        background-image: var(--lin-grad);
+      
 }

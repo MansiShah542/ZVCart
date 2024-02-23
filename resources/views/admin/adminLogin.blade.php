@@ -15,7 +15,8 @@
 <body>
     <div class="sidenav admin">
         <div class="login-main-text">
-            <h1>ZVCart<br></h1><h2> Admin Login Page</h2>
+            <h1>ZVCart<br></h1>
+            <h2> Admin Login Page</h2>
             <p>Administrating is not an easy job.</p>
         </div>
     </div>
@@ -27,14 +28,14 @@
                     <p class="text-danger">{{ Session::get('error') }} </p>
                 @endif
 
-                
+
                 <form action="{{ route('admin.login') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name" name="name">
+                        <input type="text" class="form-control" placeholder="User Name" name="name" value="{{ old('name') }}">
                         <span class="text-danger">
-                            @error('adminName')
+                            @error('name')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -43,7 +44,7 @@
                         <label>Password</label>
                         <input type="password" class="form-control" placeholder="Password" name="password">
                         <span class="text-danger">
-                            @error('adminPassword')
+                            @error('password')
                                 {{ $message }}
                             @enderror
                         </span>
