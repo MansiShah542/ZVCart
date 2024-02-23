@@ -12,14 +12,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'seller' => [
-            'driver' => 'session',
-            'provider' => 'sellers',
-        ],
 
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
+        ],
+        'seller_web' => [
+            'driver' => 'session',
+            'provider' => 'sellers',
+        ],
+          'seller_api' => [
+            'driver' => 'passport',
+            'provider' => 'sellers',
         ],
 
     ],

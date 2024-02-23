@@ -30,12 +30,12 @@
                         @auth
 
                             <li>
-                                <form class="d-flex" id="logout-form" action="{{ route('logout') }}" method="POST"
+                                <form class="d-flex" id="user-logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
                                 </form>
                                 <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();"
                                     class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Logout</a>
                             </li>
                         @else

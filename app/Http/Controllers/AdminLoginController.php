@@ -31,7 +31,7 @@ class AdminLoginController extends Controller
 
             if ($user->role === 'admin') {
                 // $user->createToken('AdminToken')->accessToken;
-                $accessToken = auth()->user()->createToken('AdminToken')->accessToken;
+                $accessToken = auth()->user()->createToken('AdminToken', ['admin'])->accessToken;
                 return redirect()->route('admin.dashboard');
             } else {
                 return redirect()->route('admin.login.view')->withInput()->withError('Unauthorised User!');
@@ -45,11 +45,12 @@ class AdminLoginController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            //revoking access token
+            $role=$user->role;
+            if($role==='admin') {
             $user->tokens->each(function ($token,$key) {
                 $token->delete();
             });
-            // $user->token()->revoke();
+        }
             Auth::logout(); // Clear the user's session
         }
 

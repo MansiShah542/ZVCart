@@ -23,12 +23,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-        if ($this->app->routesAreCached()) {
-            Passport::routes();
-        }
         Passport::tokensCan([
             'admin' => 'Admin access token',
             'user' => 'User access token',
+            'seller' => 'Seller access token',
         ]);
     }
 }

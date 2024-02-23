@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Foundation\Auth\User;
+use Laravel\Passport\HasApiTokens;
 
 class Seller extends Model implements Authenticatable
 {
-    use HasFactory,AuthenticatableTrait;
+    use HasFactory,AuthenticatableTrait,HasApiTokens;
 
     protected $fillable = [
         'company_name',

@@ -27,8 +27,9 @@
 
                                         {{-- error message --}}
                                         @if (Session::has('error'))
-                                            <p class="text-danger">{{ Session::get('error') }} </p>
+                                        <p class="text-danger">{{ Session::get('error') }} </p>
                                         @endif
+                                        {{-- success message --}}
                                         @if (session('success'))
                                             <div class="alert alert-success">
                                                 {{ session('success') }}

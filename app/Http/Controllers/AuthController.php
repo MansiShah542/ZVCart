@@ -66,10 +66,12 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            //revoking access token
+            $role=$user->role;
+            if($role==='user') {
             $user->tokens->each(function ($token,$key) {
                 $token->delete();
             });
+        }
         Auth::logout(); // Clear the user's session
         }
         return redirect()->route('login.view');
