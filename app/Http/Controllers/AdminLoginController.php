@@ -84,4 +84,7 @@ class AdminLoginController extends Controller
         $seller->delete();
         return redirect()->route('admin.vendors')->with('success', 'Seller deleted Successfully!');
     }
+    public function product_categories_view(){
+        return view('admin.productCategories');
+    }
 }

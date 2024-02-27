@@ -25,12 +25,22 @@ Route::controller(AuthController::class)->group(function () {
         Route::post('/logout', 'logout')->name('logout');
     });
 });
+//->middleware('web')
+// Route::controller(SellerController::class)->group(function () {
+//     Route::group(['prefix' => 'seller'], function () {
+//         Route::get('/login', 'seller_login_view')->middleware('web')->name('seller.login.view');
+//         Route::post('/login', 'seller_login')->middleware('web')->name('seller.login');
+//         Route::get('/register', 'seller_register_view')->middleware('web')->name('seller.register.view');
+//         Route::post('/register', 'seller_register')->middleware('web')->name('seller.register');
+//     });
+// });
 
-Route::group(['prefix' => 'seller', 'middleware' => ['auth:seller_web']], function () {
-    Route::controller(SellerController::class)->group(function () {
+Route::controller(SellerController::class)->group(function () {
+    Route::group(['prefix' => 'seller'], function () {
         Route::get('/login', 'seller_login_view')->middleware('web')->name('seller.login.view');
         Route::post('/login', 'seller_login')->middleware('web')->name('seller.login');
         Route::get('/register', 'seller_register_view')->middleware('web')->name('seller.register.view');
         Route::post('/register', 'seller_register')->middleware('web')->name('seller.register');
+        Route::post('/logout', 'seller_logout')->name('seller.logout');
     });
 });

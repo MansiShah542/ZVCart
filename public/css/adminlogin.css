@@ -1,6 +1,7 @@
-:root{
-    --lin-grad:linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+:root {
+    --lin-grad: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
+
 body {
     font-family: "Lato", sans-serif;
     min-height: 100vh;
@@ -40,6 +41,7 @@ body {
     .login-form {
         margin-top: 10%;
     }
+
     .register-form {
         margin-top: 20%;
     }
@@ -88,10 +90,12 @@ body {
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(to right, #d0ee24, #36d859, #36b6dd, #b245b4);
+    background: #ee7724;
     color: white;
 }
-.sdash{
-        background-image: var(--lin-grad);
-      
+
+.sdash {
+    /* background-image: var(--lin-grad); */
+    background: #271a4e;
 }
+
