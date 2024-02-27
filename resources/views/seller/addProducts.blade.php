@@ -14,10 +14,10 @@
         <div class="form-group col-md-6">
             <label for="name">category:</label>
             <select class="form-select" aria-label="Default select example" name="category">
-                <option selected>Category</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected disabled>Select Category</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{$category->category}} </option>
+                @endforeach
             </select>
         </div>
         <div class="row g-3">

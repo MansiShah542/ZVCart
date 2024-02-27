@@ -14,10 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('brand');
-            $table->string('category_id');
-            $table->string('price');
-            $table->string('quantity');
-            $table->string('instock');
+            $table->foreignId('category_id')->constrained('product_categories');
+            $table->integer('price');
+            $table->integer('quantity');
+            $table->boolean('instock');
             $table->string('description');
             $table->string('image');
             $table->timestamps();

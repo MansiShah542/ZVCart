@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Seller;
@@ -45,12 +46,12 @@ class AdminLoginController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $role=$user->role;
-            if($role==='admin') {
-            $user->tokens->each(function ($token,$key) {
-                $token->delete();
-            });
-        }
+            $role = $user->role;
+            if ($role === 'admin') {
+                $user->tokens->each(function ($token, $key) {
+                    $token->delete();
+                });
+            }
             Auth::logout(); // Clear the user's session
         }
 
@@ -84,7 +85,22 @@ class AdminLoginController extends Controller
         $seller->delete();
         return redirect()->route('admin.vendors')->with('success', 'Seller deleted Successfully!');
     }
-    public function product_categories_view(){
-        return view('admin.productCategories');
+    public function product_categories_view()
+    {
+        // return view('admin.productCategories');
+        $categories = DB::table("product_categories")->get();
+        // $categories = ProductCategory::all();
+        return view('admin.productCategories', ['categories'=> $categories]);
+    }
+    public function product_categories_add(Request $request)
+    {
+        $validated = $request->validate([
+            'category' => ['string','unique:product_categories,category'],
+        ]);
+        //creating category
+        $category = new ProductCategory();
+        $category->category=$validated['category'];
+        $category->save();
+        return redirect()->route('categories.view')->withSuccess('Category Added Successfully');
     }
 }

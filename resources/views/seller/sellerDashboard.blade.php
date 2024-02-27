@@ -22,9 +22,9 @@
                         <span class="fs-5 d-none d-sm-inline"><i>Seller Dashboard</i></span>
                     </a>
                     <a href="/"
-                    class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
                         <li class="nav-item">
@@ -34,9 +34,19 @@
                             </a>
                         </li>
                         <li>
-                        <a href="{{route('seller.products') }}" class="nav-link px-0 align-middle">
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fa-solid fa-tag" style="color: #ffffff;"></i> <span
                                     class="ms-1 d-none d-sm-inline text-white">Products</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="{{ route('products.add.view') }}" class="nav-link px-0 text-white"> <span
+                                            class="d-none d-sm-inline">Add Products</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('seller.products') }}" class="nav-link px-0 text-white"> <span
+                                            class="d-none d-sm-inline">View Product</span></a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="{{ route('seller.orders') }}" class="nav-link px-0 align-middle">
