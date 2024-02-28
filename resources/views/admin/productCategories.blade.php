@@ -33,11 +33,21 @@
             </div>
         </form>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <h5>All Categories</h5>
                 <ul class="list-group">
                     @foreach ($categories as $category)
-                        <li class="list-group-item">{{ $category->category }}</li>
+                        <div>
+                            <li class="list-group-item">{{ $category->category }}
+                                <form action="{{ route('category.delete', $category->id) }}" method="POST"
+                                    class="float-end">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash-can"></i></button>
+                                </form>
+                            </li>
+                        </div>
                     @endforeach
                 </ul>
             </div>

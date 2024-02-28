@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminauth']], function () {
         //product category routes
         Route::get('products/categories', 'product_categories_view')->name('categories.view');
         Route::post('products/categories', 'product_categories_add')->name('categories.add');
+        Route::delete('products/categories/{id}', 'product_categories_delete')->name('category.delete');
     });
 });
 Route::group(['prefix' => 'seller'], function () {

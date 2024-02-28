@@ -87,20 +87,33 @@ class AdminLoginController extends Controller
     }
     public function product_categories_view()
     {
-        // return view('admin.productCategories');
         $categories = DB::table("product_categories")->get();
-        // $categories = ProductCategory::all();
-        return view('admin.productCategories', ['categories'=> $categories]);
+        return view('admin.productCategories', ['categories' => $categories]);
     }
     public function product_categories_add(Request $request)
     {
         $validated = $request->validate([
-            'category' => ['string','unique:product_categories,category'],
+            'category' => ['string', 'unique:product_categories,category'],
         ]);
         //creating category
         $category = new ProductCategory();
-        $category->category=$validated['category'];
+        $category->category = $validated['category'];
         $category->save();
         return redirect()->route('categories.view')->withSuccess('Category Added Successfully');
     }
+    public function product_categories_delete(Request $request, $id)
+    {
+        $category = ProductCategory::find($id);
+        if (!$category) {
+            return redirect()->back()->with('error', 'Category not found.');
+        }
+        try {
+            $category->delete();
+            return redirect()->back()->with('success', 'Category deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete category. ' . $e->getMessage());
+        }
+        // return redirect()->route('categories.view')->withSuccess('Category Deleted Successfully');
+    }
+
 }

@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('category_id')->constrained('product_categories');
             $table->integer('price');
             $table->integer('quantity');
-            $table->boolean('instock');
+            $table->boolean('instock')->default(true);
             $table->string('description');
             $table->string('image');
             $table->timestamps();
