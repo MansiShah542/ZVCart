@@ -56,8 +56,8 @@
                                     class="ms-1 d-none d-sm-inline text-white">Products</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0 text-white"> <span
-                                            class="d-none d-sm-inline">Product</span> 1</a>
+                                    <a href="{{route('categories.view') }}" class="nav-link px-0 text-white"> <span
+                                            class="d-none d-sm-inline">Categories</span></a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0 text-white"> <span
@@ -75,7 +75,6 @@
                             <span class="d-none d-sm-inline mx-1">Admin</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Laravel\Passport\Token;
 
 class SellerController extends Controller
 {
@@ -22,15 +23,14 @@ class SellerController extends Controller
         ]);
 
         if (Auth::guard('seller_web')->attempt($credentials)) {
-            $seller = Auth::guard('seller_web')->user();
+            $seller = auth()->guard('seller_web')->user();
             if ($seller->approved) {
                 // Seller is approved, proceed with login
-                // $accessToken = auth()->user()->createToken('SellerToken', ['seller'])->accessToken;
                 $accessToken = Auth::guard('seller_web')->user()->createToken('SellerToken', ['seller'])->accessToken;
                 return redirect()->route('seller.dashboard'); // Adjust the route to your seller dashboard
             } else {
                 // Seller is not approved, logout and redirect back with error
-                Auth::guard('seller_web')->logout();
+                auth()->guard('seller_web')->logout();
                 return redirect()->route('seller.login.view')->with('error', 'Your account is not yet approved by the Admin.');
             }
         } else {
@@ -69,17 +69,36 @@ class SellerController extends Controller
 
         Session::flash('success', 'Registration successful!');
 
-        return redirect()->route('seller.login.view')->withSuccess('Registered Successfully! You can login once Approved');
+        return redirect()->route('seller.login.view')->with('success', 'Registered Successfully! You can login once Approved');
     }
     public function seller_logout()
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->tokens->each(function ($token, $key) {
+        // if (Auth::guard('seller_web')->check()) {
+        $seller = Auth::guard('seller_web')->user();
+        if ($seller) {
+            $seller->tokens->each(function ($token, $key) {
                 $token->delete();
             });
-            Auth::logout(); // Clear the user's session
         }
+
+        auth()->guard('seller_web')->logout(); // Clear the user's session
+        // }
         return redirect()->route('seller.login.view');
+
     }
+
+
+    public function seller_dash()
+    {
+        return view('seller.sellerDashboard');
+    }
+    public function seller_billing()
+    {
+        return view('seller.sbilling');
+    }
+    public function seller_orders()
+    {
+        return view('seller.sorders');
+    }
+    
 }
