@@ -37,14 +37,6 @@ Route::group(['prefix' => 'seller'], function () {
         Route::get('/products', 'seller_products')->name('seller.products');
         Route::get('/products/add', 'products_add_view')->name('products.add.view');
         Route::post('/products/add', 'products_add')->name('products.add');
+        Route::delete('/products/delete/{id}', 'product_delete')->name('product.delete');
     });
 });
-
-// Route::controller(SellerController::class)->group(function () {
-// Route::get('/seller/login', 'seller_login_view')->name('seller.login.view');
-//     Route::post('/seller/login', 'seller_login')->name('seller.login');
-// Route::get('/seller/register', 'seller_register_view')->name('seller.register.view');
-//     Route::post('/seller/register', 'seller_register')->name('seller.register');
-// });
-
-

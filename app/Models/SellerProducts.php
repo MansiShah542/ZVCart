@@ -13,8 +13,8 @@ class sellerProducts extends Model
         'brand',
         'category_id',
         'price',
+        'discount',
         'quantity',
-        'instock',
         'description',
         'image',
     ];
